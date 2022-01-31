@@ -1,9 +1,38 @@
 package com.lowe.playground.service;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+
 public class ProblemSolutions {
+	
+	class Node() {
+		private int data;
+		
+		public int getData() {
+			return this.data();
+		}
+		
+		public void setData(int data) {
+			this.data = data;
+		}	
+	}
+	
 	//2.5 Sum Lists - (716) + (592) = 219 --- 617 + 295
 	
+	public int sumLists(LinkedList<Integer> a, LinkedList<Integer> b) {
+		int returnValue = -1;
+		
+		return returnValue;
+	}
+	
 	//2.6 Palindrome, linked list
+	public Node frindIntersection(LinkedList<Node> a, LinkedList<Node> b) {
+		HashMap<Integer, Node> hash = new HashMap<Integer, Node>;
+		for(Node node : a) {
+			
+		}
+		return null;
+	}
 	
 	//2.7 Intersection - Linked List
 	
