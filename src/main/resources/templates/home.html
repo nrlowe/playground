@@ -6,6 +6,11 @@
     <link href="/css/home.css" rel="stylesheet">
 </head>
 <body>
+    <div class = "cwol">
+        <form th:action="@{/cwol}" method = "GET">
+            <input type="Submit" value="Conway's Way of Life">
+        </form>
+    </div>
     <div class = "brackets">
         <form th:action="@{/brackets}" method = "GET">
             <input type="text" th:name="brackets">
