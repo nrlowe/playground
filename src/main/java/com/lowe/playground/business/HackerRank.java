@@ -1,11 +1,12 @@
 package com.lowe.playground.business;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HackerRank {
 
-    //Save-Humanity
+    //Save-Humanity - timeout error on larger test cases
     public void virusIndices(String p, String v) {
         char[] geneArr = p.toCharArray();
         char[] virusArr = v.toCharArray();
@@ -61,5 +62,28 @@ public class HackerRank {
     //Save-Humanity Cleanup
     public void virusIndicesRefactor(String p, String v) {
         //check for indexs for each char in v and map where crossovers occur
+    }
+
+    //Minimum Cost
+    public static int findMinimumCost(int[] array) {
+        // Sort the array to find the median
+        Arrays.sort(array);
+        int n = array.length;
+
+        // Find the median
+        int median;
+        if (n % 2 == 0) {
+            median = (array[n / 2 - 1] + array[n / 2]) / 2;
+        } else {
+            median = array[n / 2];
+        }
+
+        // Calculate the cost to convert all elements to the median
+        int cost = 0;
+        for (int num : array) {
+            cost += Math.abs(num - median);
+        }
+
+        return cost;
     }
 }   
