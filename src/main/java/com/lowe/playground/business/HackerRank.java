@@ -140,5 +140,16 @@ public class HackerRank {
         return -1;
     }
 
+//Number of Queen Moves
+    public int queensAttack(int n, int k, int r_q, int c_q, List<List<Integer>> obstacles) {
+        //all directions up, up right, right, down right, down, down left, left, up left
+        int[] dx = {0, 1, 0, 1, 0, -1, 0, -1};
+        int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1}; 
+        for(int i = 0; i < dx.length; i++){
+            int xmove = dx[i];
+            int ymove = dy[i];
+        }
+        return 0;
+    }
 
 }   
