@@ -2,9 +2,14 @@ package com.lowe.playground.business;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class HackerRank {
 
@@ -150,6 +155,24 @@ public class HackerRank {
             int ymove = dy[i];
         }
         return 0;
+    }
+
+//Climbing Leaderboard Problem
+    public List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
+        List<Integer> returnList = new ArrayList<Integer>();
+        ranked.stream().distinct().sorted().collect(Collectors.toList());
+        for(int j = 0; j < player.size(); j++){
+            int  i = 1;
+            for(Integer score : ranked){
+                if(player.get(j) >= score){
+                   returnList.add(i); 
+                   break;
+                }
+                i++;
+            }
+        }
+        
+        return returnList;
     }
 
 }   
