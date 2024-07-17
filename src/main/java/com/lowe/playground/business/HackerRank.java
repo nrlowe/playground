@@ -197,7 +197,29 @@ public class HackerRank {
 
 //Array Leap Game
     public boolean canWin(int leap, int[] game){
-        return true;
+        boolean inGame = true;
+        int index = 0;
+        while(inGame){
+            if(index + leap >= game.length || index + 1 >= game.length){
+                return true;
+            }
+            if(index + leap < game.length){
+                if(game[index + leap] == 0){
+                    index = index + leap;
+                }
+            } else if (index + 1 < game.length){
+                if(game[index + 1] == 0){
+                    index = index + 1;
+                }
+            } else if(index - 1 >= 0){
+                if(game[index - 1] == 0){
+                    index = index - 1;
+                }
+            } else {
+                inGame = false;
+            }
+        }
+        return false;
     }
 
 }   
