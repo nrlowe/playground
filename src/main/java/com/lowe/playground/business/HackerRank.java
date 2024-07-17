@@ -221,4 +221,51 @@ public class HackerRank {
         }
         return false;
     }
+
+//Comparator Problem
+    class Player{
+        String name;
+        int score;
+        
+        Player(String name, int score){
+            this.name = name;
+            this.score = score;
+        }
+    }
+
+    public Player[] checker(Player[] players) {
+        Player[] sortedArray = new Player[players.length];
+
+        return sortedArray;
+    }
+
+//Student Priority Queue 
+    class Student {
+        int id;
+        String name;
+        double cgpa;
+
+        public int getId(){
+            return id;
+        }
+
+        public String getName(){
+            return name;
+        }
+
+        public double getCGPA() {
+            return cgpa;
+        }
+    }
+
+    public List<Student> getStudents(List<String> events) {
+        List<Student> returnList = new ArrayList<Student>();
+        PriorityQueue<Student> pq = new PriorityQueue<Student>(Comparator.comparing(x -> x.getCGPA()));
+        while(!pq.isEmpty()){
+
+        }
+        return returnList;
+    }
+
+
 }   
