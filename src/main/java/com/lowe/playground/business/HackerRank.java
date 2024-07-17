@@ -175,4 +175,29 @@ public class HackerRank {
         return returnList;
     }
 
+//Organizing Containers - moving items to match in a container in n number of swaps
+    public static String organizingContainers(List<List<Integer>> container) {
+    // Write your code here
+        boolean possible = false;
+        int containers = container.size();
+        int columns = container.get(0).size();
+        for(List<Integer> cont : container){
+
+        }
+        if (possible) {
+            return "Possible";
+        } else {
+            return "Impossible";
+        }
+    }
+
+    public static void containerSwap() {
+
+    }
+
+//Array Leap Game
+    public boolean canWin(int leap, int[] game){
+        return true;
+    }
+
 }   
