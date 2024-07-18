@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -71,29 +73,6 @@ public class HackerRank {
         //check for indexs for each char in v and map where crossovers occur
     }
 
-//Minimum Cost of Equalizing an Array
-    public static int findMinimumCost(int[] array) {
-        // Sort the array to find the median
-        Arrays.sort(array);
-        int n = array.length;
-
-        // Find the median
-        int median;
-        if (n % 2 == 0) {
-            median = (array[n / 2 - 1] + array[n / 2]) / 2;
-        } else {
-            median = array[n / 2];
-        }
-
-        // Calculate the cost to convert all elements to the median
-        int cost = 0;
-        for (int num : array) {
-            cost += Math.abs(num - median);
-        }
-
-        return cost;
-    }
-
 //Shortest Path 2-D Array
     class Cell {
         int x, y, cost;
@@ -126,14 +105,14 @@ public class HackerRank {
             Cell currentCell = queue.poll();
             int currentx = currentCell.x;
             int currenty = currentCell.y;
-            if(currentx == rowLength && currenty == colLength){
+            if(currentx == rowLength - 1 && currenty == colLength - 1){
                 return minCost[currentx][currenty];
             }
             for(int i = 0; i < 4; i++){
                 int nextx = dx[i];
                 int nexty = dy[i];
 
-                if(nextx >= 0 && currentx < nextx && rowLength >= 0 && currenty < colLength){ 
+                if(nextx >= 0 && nextx < rowLength && nexty >= 0 && nexty < colLength){ 
                     int newCost = minCost[currentx][currenty] + grid[nextx][nexty];
                     if(newCost < minCost[nextx][nexty]){
                         minCost[nextx][nexty] = newCost;
@@ -260,6 +239,7 @@ public class HackerRank {
 
     public List<Student> getStudents(List<String> events) {
         List<Student> returnList = new ArrayList<Student>();
+        Map<Integer, List<String>> studentMap = new HashMap<Integer, List<String>>();
         PriorityQueue<Student> pq = new PriorityQueue<Student>(Comparator.comparing(x -> x.getCGPA()));
         while(!pq.isEmpty()){
 
