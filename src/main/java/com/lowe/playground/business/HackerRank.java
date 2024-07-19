@@ -124,6 +124,50 @@ public class HackerRank {
         return -1;
     }
 
+//Dijkstra's Algorithm
+    static class DNode implements Comparable<DNode> {
+        int id, cost;
+
+        DNode(int id, int cost){
+            this.id = id;
+            this.cost = cost;
+        }
+
+        @Override
+        public int compareTo(DNode other){
+            return Integer.compare(this.cost, other.cost);
+        }
+    }
+
+    public static int DijkstraShortestPath(int n, Map<Integer, List<DNode>> graph, int start, int end){
+        PriorityQueue<DNode> pq = new PriorityQueue<>();
+        pq.offer(new DNode(start, 0));
+        int[] minCost = new int[n];
+        Arrays.fill(minCost, Integer.MAX_VALUE);
+        minCost[start] = 0;
+        while(!pq.isEmpty()){
+            DNode current = pq.poll();
+            int currentId = current.id;
+            int currentCost = current.cost;
+
+            if(currentId == end){
+                return currentCost;
+            }
+
+            //Explore Neighbors
+            if(graph.containsKey(currentId)){
+                for(DNode neighbor : graph.get(currentId)){
+                    int newCost = currentCost + neighbor.cost;
+                    if(newCost < minCost[neighbor.id]){
+                        minCost[neighbor.id] = newCost;
+                        pq.offer(new DNode(neighbor.id, newCost));
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
 //Number of Queen Moves
     public int queensAttack(int n, int k, int r_q, int c_q, List<List<Integer>> obstacles) {
         //all directions up, up right, right, down right, down, down left, left, up left
@@ -224,6 +268,12 @@ public class HackerRank {
         String name;
         double cgpa;
 
+        Student(int id, String name, double cgpa){
+            this.id = id;
+            this.name = name;
+            this.cgpa = cgpa;
+        }
+
         public int getId(){
             return id;
         }
@@ -239,10 +289,17 @@ public class HackerRank {
 
     public List<Student> getStudents(List<String> events) {
         List<Student> returnList = new ArrayList<Student>();
-        Map<Integer, List<String>> studentMap = new HashMap<Integer, List<String>>();
-        PriorityQueue<Student> pq = new PriorityQueue<Student>(Comparator.comparing(x -> x.getCGPA()));
+        PriorityQueue<Student> pq = new PriorityQueue<Student>(Comparator.comparingDouble((Student s) -> (Double) s.getCGPA()).thenComparing(s -> s.getName()));
+        for(int i = 0; i < events.size(); i++){
+            if(events.get(i).startsWith("E")){
+                String[] event = events.get(i).split(" ");
+                pq.offer(new Student(Integer.parseInt(event[3]), event[1], Double.parseDouble(event[2])));
+            } else if (events.get(i).startsWith("S")){
+                pq.poll();
+            }
+        }
         while(!pq.isEmpty()){
-
+            returnList.add(pq.poll());
         }
         return returnList;
     }
