@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.stream.Collector;
@@ -304,5 +306,46 @@ public class HackerRank {
         return returnList;
     }
 
+//3D Surface Area
+    public int surfaceArea(List<List<Integer>> A){
+        int surface = 0;
+        int maxSurface = 6;
+        int length = A.size();
+        int width = A.get(0).size();
+        int[] dw = {0, 1, -1, 0};
+        int[] dl = {1, 0, 0, -1};
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j < width; j++){
+                int block = A.get(i).get(j);
+                int suf = 0;
+                if(block > 1){
+                    suf = (block * maxSurface) - (2 * block);
+                } else {
+                    suf = maxSurface;
+                }
+                for(int n = 0; n < 4; n++){
+                    int nextw = dw[n] + j;
+                    int nextl = dl[n] + i;
+                    if(nextw >= 0 && nextw < width && nextl >= 0 && nextl < length){
+                        int neighbor = A.get(length).get(width);
+                        if(neighbor > block){
+                            suf = suf - block;
+                        } else if(neighbor <= block) {
+                            suf = suf - neighbor;
+                        }
+                    }
+                }
+                surface = surface + suf;
+            }
+        }
+        return surface;
+    }
+    
+//Nondivisible Subset
+    public int NondivisibleSubset(int k, List<Integer> s){
+        Set<Integer> returnSet = new HashSet<Integer>();
+        //remove duplicates before iterating? 
+        return returnSet.size();
+    }
 
 }   
