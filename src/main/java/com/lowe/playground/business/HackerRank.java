@@ -348,4 +348,47 @@ public class HackerRank {
         return returnSet.size();
     }
 
-}   
+//Largest Region in 2D Array
+    public int regionSearch(List<List<Integer>> matrix){
+        int regionXL = 0;
+        boolean[][] visited = new boolean[matrix.size()][matrix.get(0).size()];
+        for(boolean[] row : visited){
+            Arrays.fill(row, false);
+        }
+        for(int x = 0; x < matrix.size(); x++){
+            for(int y =0; y < matrix.get(0).size(); y++){
+                if(!visited[x][y] && matrix.get(x).get(y) == 1){
+                    //check neighbors + count
+                    int regionSize = dfs(0, visited, matrix, x, y);
+                    if(regionSize > regionXL){
+                        regionXL = regionSize;
+                    }
+                } else {
+                    visited[x][y] = true;
+                }
+            }
+        }
+        return regionXL;
+    }
+
+    public int dfs(int size, boolean[][] visited, List<List<Integer>> matrix, int x, int y){
+        for(int n = 0; n < 4; n++){
+            int nx = dx[n] + x;
+            int ny = dy[n] + y;
+            if(nx >= 0 && nx < visited.length && ny >= 0 && ny < visited[0].length){
+                if(matrix.get(nx).get(ny) == 1 && !visited[nx][ny]){
+                    visited[x][y] = true;
+                    size = 1 + dfs(size, visited, matrix, nx, ny);
+                }
+            }
+        }
+        return size;
+    }
+    
+
+
+
+    //BFS
+    //DFS
+
+}
