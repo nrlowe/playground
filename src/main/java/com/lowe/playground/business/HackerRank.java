@@ -384,7 +384,18 @@ public class HackerRank {
         }
         return size;
     }
-    
+
+//Train Tracks
+    public int gridLandMetro(int n, int m, int k, List<List<Integer>> tracks){
+        //can tracks overllap?
+        int totalSpaces = n * m;
+        for(List<Integer> track : tracks){
+            int row = track.get(0);
+            int start = track.get(1);
+            int end = track.get(2);
+        }
+        return -1;
+    }
 
 
 
