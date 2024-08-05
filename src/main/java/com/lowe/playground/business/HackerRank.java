@@ -387,15 +387,31 @@ public class HackerRank {
 
 //Train Tracks
     public int gridLandMetro(int n, int m, int k, List<List<Integer>> tracks){
-        //can tracks overllap?
-        int totalSpaces = n * m;
+        boolean[][] hasTrack = new boolean[n][m];
+        int lights = 0;
+        for(boolean[] row : hasTrack){
+            Arrays.fill(row, false);
+        }
         for(List<Integer> track : tracks){
             int row = track.get(0);
             int start = track.get(1);
             int end = track.get(2);
+            for(int x = start; x <= end; x++){
+                if(!hasTrack[row - 1][x]){
+                    hasTrack[row - 1][x] = true;
+                }
+            }
         }
-        return -1;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(!hasTrack[i][j]){
+                    lights++;
+                }
+            }
+        }
+        return lights;
     }
+
 
 
 
