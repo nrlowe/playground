@@ -412,6 +412,11 @@ public class HackerRank {
         return lights;
     }
 
+//CrabGraphs
+    public int crabGraphs(int n, int t, List<List<Integer>> graph) {
+        return -1;
+    }
+
 
 
 
